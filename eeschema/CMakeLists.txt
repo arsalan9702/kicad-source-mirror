@@ -799,11 +799,6 @@ else()
         DESTINATION ${KICAD_KIFACE}
         COMPONENT binary
         )
-    install(
-        DIRECTORY ${CMAKE_SOURCE_DIR}/resources/gseim/
-        DESTINATION ${KICAD_DATA}/resources/gseim
-        COMPONENT binary
-    )
 endif()
 
 

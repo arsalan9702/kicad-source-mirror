@@ -1145,10 +1145,6 @@ if( KICAD_BUILD_QA_TESTS )
     add_subdirectory( qa )
 endif()
 
-# Demos
-if( KICAD_INSTALL_DEMOS )
-    add_subdirectory( demos )
-endif ( KICAD_INSTALL_DEMOS )
 
 # I18n Translations
 if( KICAD_BUILD_I18N )
