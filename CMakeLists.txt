@@ -1072,12 +1072,6 @@ if( KICAD_IPC_API )
     find_package( nng REQUIRED )
 endif()
 
-#================================================
-# Add the doxygen target
-#================================================
-find_package( Doxygen )
-
-add_subdirectory( doxygen )
 
 # Generate config.h.
 configure_file( ${PROJECT_SOURCE_DIR}/cmake/config.h.cmake
