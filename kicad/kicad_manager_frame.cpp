@@ -85,8 +85,6 @@
 #include <jobs/jobset.h>
 #include <widgets/wx_aui_art_providers.h>
 
-#include <../pcbnew/pcb_io/kicad_sexpr/pcb_io_kicad_sexpr.h>   // for SEXPR_BOARD_FILE_VERSION def
-
 
 #ifdef __WXMAC__
 #include <MacTypes.h>
@@ -298,12 +296,6 @@ KICAD_MANAGER_FRAME::KICAD_MANAGER_FRAME( wxWindow* parent, const wxString& titl
     // Init for dropping files
     m_acceptedExts.emplace( FILEEXT::ProjectFileExtension, &KICAD_MANAGER_ACTIONS::loadProject );
     m_acceptedExts.emplace( FILEEXT::LegacyProjectFileExtension, &KICAD_MANAGER_ACTIONS::loadProject );
-
-    // Gerber files
-    // Note that all gerber files are aliased as GerberFileExtension
-    m_acceptedExts.emplace( FILEEXT::GerberFileExtension, &KICAD_MANAGER_ACTIONS::viewDroppedGerbers );
-    m_acceptedExts.emplace( FILEEXT::GerberJobFileExtension, &KICAD_MANAGER_ACTIONS::viewDroppedGerbers );
-    m_acceptedExts.emplace( FILEEXT::DrillFileExtension, &KICAD_MANAGER_ACTIONS::viewDroppedGerbers );
 
     DragAcceptFiles( true );
 }
@@ -644,39 +636,10 @@ void KICAD_MANAGER_FRAME::DoWithAcceptedFiles()
         }
     }
 
-    // Then stock gerber files in gerberFiles and run action for other files.
-    wxString gerberFiles;
-
-    // Gerbview editor should be able to open Gerber and drill files
     for( const wxFileName& fileName : m_AcceptedFiles )
     {
-        wxString ext = fileName.GetExt();
-
-        if( ext == FILEEXT::GerberJobFileExtension
-            || ext == FILEEXT::DrillFileExtension
-            || FILEEXT::IsGerberFileExtension( ext ) )
-        {
-            gerberFiles += wxT( '\"' );
-            gerberFiles += fileName.GetFullPath() + wxT( '\"' );
-            gerberFiles = gerberFiles.Pad( 1 );
-        }
-        else
-        {
-            wxString fn = fileName.GetFullPath();
-            m_toolManager->RunAction<wxString*>( *m_acceptedExts.at( fileName.GetExt() ), &fn );
-        }
-    }
-
-    // Execute Gerbviewer
-    if( !gerberFiles.IsEmpty() )
-    {
-        wxString fullEditorName = FindKicadFile( GERBVIEW_EXE );
-
-        if( wxFileExists( fullEditorName ) )
-        {
-            wxString command = fullEditorName + " " + gerberFiles;
-            m_toolManager->RunAction<wxString*>( *m_acceptedExts.at( FILEEXT::GerberFileExtension ), &command );
-        }
+        wxString fn = fileName.GetFullPath();
+        m_toolManager->RunAction<wxString*>( *m_acceptedExts.at( fileName.GetExt() ), &fn );
     }
 }
 
@@ -1459,7 +1422,7 @@ void KICAD_MANAGER_FRAME::OnIdle( wxIdleEvent& aEvent )
                     else if( fn.GetExt() == FILEEXT::LegacyPcbFileExtension
                              || fn.GetExt() == FILEEXT::KiCadPcbFileExtension )
                     {
-                        GetToolManager()->RunAction( KICAD_MANAGER_ACTIONS::editPCB );
+                        GetToolManager()->RunAction<wxString*>( KICAD_MANAGER_ACTIONS::openTextEditor, &file.fileName );
                     }
                 }
 

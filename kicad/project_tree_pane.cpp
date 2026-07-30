@@ -117,25 +117,14 @@ static const wxChar* s_allowedExtensionsToList[] =
     wxT( "^.*\\.pdf$" ),
     wxT( "^.*\\.sch$" ),           // Legacy Eeschema files
     wxT( "^.*\\.kicad_sch$" ),     // S-expr Eeschema files
-    wxT( "^[^$].*\\.brd$" ),       // Legacy Pcbnew files
-    wxT( "^[^$].*\\.kicad_pcb$" ), // S format Pcbnew board files
     wxT( "^[^$].*\\.kicad_dru$" ), // Design rule files
     wxT( "^[^$].*\\.kicad_wks$" ), // S format kicad drawing sheet files
     wxT( "^[^$].*\\.kicad_mod$" ), // S format kicad footprint files, currently not listed
-    wxT( "^.*\\.net$" ),           // pcbnew netlist file
     wxT( "^.*\\.cir$" ),           // Spice netlist file
     wxT( "^.*\\.lib$" ),           // Legacy schematic library file
     wxT( "^.*\\.kicad_sym$" ),     // S-expr symbol libraries
     wxT( "^.*\\.txt$" ),           // Text files
     wxT( "^.*\\.md$" ),            // Markdown files
-    wxT( "^.*\\.pho$" ),           // Gerber file (Old Kicad extension)
-    wxT( "^.*\\.gbr$" ),           // Gerber file
-    wxT( "^.*\\.gbrjob$" ),        // Gerber job file
-    wxT( "^.*\\.gb[alops]$" ),     // Gerber back (or bottom) layer file (deprecated Protel ext)
-    wxT( "^.*\\.gt[alops]$" ),     // Gerber front (or top) layer file (deprecated Protel ext)
-    wxT( "^.*\\.g[0-9]{1,2}$" ),   // Gerber inner layer file (deprecated Protel ext)
-    wxT( "^.*\\.gm[0-9]{1,2}$" ),  // Gerber mechanical layer file (deprecated Protel ext)
-    wxT( "^.*\\.gko$" ),           // Gerber keepout layer file (deprecated Protel ext)
     wxT( "^.*\\.odt$" ),
     wxT( "^.*\\.htm$" ),
     wxT( "^.*\\.html$" ),
@@ -387,10 +376,6 @@ wxString PROJECT_TREE_PANE::GetFileExt( TREE_FILE_TYPE type )
     case TREE_FILE_TYPE::JSON_PROJECT:          return FILEEXT::ProjectFileExtension;
     case TREE_FILE_TYPE::LEGACY_SCHEMATIC:      return FILEEXT::LegacySchematicFileExtension;
     case TREE_FILE_TYPE::SEXPR_SCHEMATIC:       return FILEEXT::KiCadSchematicFileExtension;
-    case TREE_FILE_TYPE::LEGACY_PCB:            return FILEEXT::LegacyPcbFileExtension;
-    case TREE_FILE_TYPE::SEXPR_PCB:             return FILEEXT::KiCadPcbFileExtension;
-    case TREE_FILE_TYPE::GERBER:                return FILEEXT::GerberFileExtensionsRegex;
-    case TREE_FILE_TYPE::GERBER_JOB_FILE:       return FILEEXT::GerberJobFileExtension;
     case TREE_FILE_TYPE::HTML:                  return FILEEXT::HtmlFileExtension;
     case TREE_FILE_TYPE::PDF:                   return FILEEXT::PdfFileExtension;
     case TREE_FILE_TYPE::TXT:                   return FILEEXT::TextFileExtension;
@@ -400,9 +385,6 @@ wxString PROJECT_TREE_PANE::GetFileExt( TREE_FILE_TYPE type )
     case TREE_FILE_TYPE::CMP_LINK:              return FILEEXT::FootprintAssignmentFileExtension;
     case TREE_FILE_TYPE::REPORT:                return FILEEXT::ReportFileExtension;
     case TREE_FILE_TYPE::FP_PLACE:              return FILEEXT::FootprintPlaceFileExtension;
-    case TREE_FILE_TYPE::DRILL:                 return FILEEXT::DrillFileExtension;
-    case TREE_FILE_TYPE::DRILL_NC:              return "nc";
-    case TREE_FILE_TYPE::DRILL_XNC:             return "xnc";
     case TREE_FILE_TYPE::SVG:                   return FILEEXT::SVGFileExtension;
     case TREE_FILE_TYPE::CSV:                   return FILEEXT::CsvFileExtension;
     case TREE_FILE_TYPE::DRAWING_SHEET:         return FILEEXT::DrawingSheetFileExtension;

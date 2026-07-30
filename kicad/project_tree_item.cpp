@@ -309,21 +309,9 @@ void PROJECT_TREE_ITEM::Activate( PROJECT_TREE_PANE* aTreePrjFrame )
 
     case TREE_FILE_TYPE::LEGACY_PCB:
     case TREE_FILE_TYPE::SEXPR_PCB:
-        // Boards not part of the project are opened in a separate process.
-        if( fullFileName == frame->PcbFileName() || fullFileName == frame->PcbLegacyFileName() )
-            toolMgr->RunAction( KICAD_MANAGER_ACTIONS::editPCB );
-        else
-            toolMgr->RunAction<wxString*>( KICAD_MANAGER_ACTIONS::editOtherPCB, &fullFileName );
-
+        toolMgr->RunAction<wxString*>( KICAD_MANAGER_ACTIONS::openTextEditor, &fullFileName );
         break;
 
-    case TREE_FILE_TYPE::GERBER:
-    case TREE_FILE_TYPE::GERBER_JOB_FILE:
-    case TREE_FILE_TYPE::DRILL:
-    case TREE_FILE_TYPE::DRILL_NC:
-    case TREE_FILE_TYPE::DRILL_XNC:
-        toolMgr->RunAction<wxString*>( KICAD_MANAGER_ACTIONS::viewGerbers, &fullFileName );
-        break;
 
     case TREE_FILE_TYPE::HTML:
         wxLaunchDefaultBrowser( fullFileName );
@@ -345,9 +333,7 @@ void PROJECT_TREE_ITEM::Activate( PROJECT_TREE_PANE* aTreePrjFrame )
         break;
 
     case TREE_FILE_TYPE::FOOTPRINT_FILE:
-        toolMgr->RunAction( KICAD_MANAGER_ACTIONS::editFootprints );
-        packet = fullFileName.ToStdString();
-        kiway.ExpressMail( FRAME_FOOTPRINT_EDITOR, MAIL_FP_EDIT, packet );
+        toolMgr->RunAction<wxString*>( KICAD_MANAGER_ACTIONS::openTextEditor, &fullFileName );
         break;
 
     case TREE_FILE_TYPE::SCHEMATIC_LIBFILE:

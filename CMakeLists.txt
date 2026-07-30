@@ -1074,10 +1074,10 @@ endif()
 
 #================================================
 # Add the doxygen target
-#================================================
-find_package( Doxygen )
+# #================================================
+# find_package( Doxygen )
 
-add_subdirectory( doxygen )
+# add_subdirectory( doxygen )
 
 # Generate config.h.
 configure_file( ${PROJECT_SOURCE_DIR}/cmake/config.h.cmake

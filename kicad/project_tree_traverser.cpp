@@ -112,30 +112,10 @@ wxDirTraverseResult PROJECT_TREE_TRAVERSER::OnFile( const wxString& aSrcFilePath
         eeschema->SaveFileAs( m_projectDirPath, m_projectName, m_newProjectDirPath,
                               m_newProjectName, aSrcFilePath, m_errors );
     }
-    else if( m_frame && ( ext == FILEEXT::KiCadPcbFileExtension
-             || ext == FILEEXT::KiCadPcbFileExtension + FILEEXT::BackupFileSuffix
-             || ext == FILEEXT::LegacyPcbFileExtension
-             || ext == FILEEXT::KiCadFootprintFileExtension
-             || ext == FILEEXT::LegacyFootprintLibPathExtension
-             || ext == FILEEXT::FootprintAssignmentFileExtension
-             || destFile.GetName() == FILEEXT::FootprintLibraryTableFileName ) )
-    {
-        KIFACE* pcbnew = m_frame->Kiway().KiFACE( KIWAY::FACE_PCB );
-        pcbnew->SaveFileAs( m_projectDirPath, m_projectName, m_newProjectDirPath,
-                            m_newProjectName, aSrcFilePath, m_errors );
-    }
     else if( m_frame && ext == FILEEXT::DrawingSheetFileExtension )
     {
         KIFACE* pleditor = m_frame->Kiway().KiFACE( KIWAY::FACE_PL_EDITOR );
         pleditor->SaveFileAs( m_projectDirPath, m_projectName, m_newProjectDirPath,
-                              m_newProjectName, aSrcFilePath, m_errors );
-    }
-    else if( m_frame && ( ext == FILEEXT::GerberJobFileExtension
-           || ext == FILEEXT::DrillFileExtension
-             || FILEEXT::IsGerberFileExtension( ext ) ) )
-    {
-        KIFACE* gerbview = m_frame->Kiway().KiFACE( KIWAY::FACE_GERBVIEW );
-        gerbview->SaveFileAs( m_projectDirPath, m_projectName, m_newProjectDirPath,
                               m_newProjectName, aSrcFilePath, m_errors );
     }
     else if( destFile.GetName().StartsWith( FILEEXT::LockFilePrefix )

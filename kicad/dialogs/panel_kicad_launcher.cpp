@@ -150,23 +150,8 @@ void PANEL_KICAD_LAUNCHER::CreateLaunchers()
     addLauncher( KICAD_MANAGER_ACTIONS::editSymbols, BITMAPS::icon_libedit,
                  _( "Edit global and/or project schematic symbol libraries" ) );
 
-    addLauncher( KICAD_MANAGER_ACTIONS::editPCB, BITMAPS::icon_pcbnew,
-                 _( "Edit the project PCB design" ) );
-
-    addLauncher( KICAD_MANAGER_ACTIONS::editFootprints, BITMAPS::icon_modedit,
-                 _( "Edit global and/or project PCB footprint libraries" ) );
-
-    addLauncher( KICAD_MANAGER_ACTIONS::viewGerbers, BITMAPS::icon_gerbview,
-                 _( "Preview Gerber files" ) );
-
-    addLauncher( KICAD_MANAGER_ACTIONS::convertImage, BITMAPS::icon_bitmap2component,
-                 _( "Convert bitmap images to schematic symbols or PCB footprints" ) );
-
-    addLauncher( KICAD_MANAGER_ACTIONS::showCalculator, BITMAPS::icon_pcbcalculator,
-                 _( "Show tools for calculating resistance, current capacity, etc." ) );
-
     addLauncher( KICAD_MANAGER_ACTIONS::editDrawingSheet, BITMAPS::icon_pagelayout_editor,
-                 _( "Edit drawing sheet borders and title blocks for use in schematics and PCB designs" ) );
+                 _( "Edit drawing sheet borders and title blocks for use in schematics" ) );
 
     BITMAP_BUTTON* bb = addLauncher( KICAD_MANAGER_ACTIONS::showPluginManager, BITMAPS::icon_pcm,
                                      _( "Manage downloadable packages from KiCad and 3rd party repositories" ),

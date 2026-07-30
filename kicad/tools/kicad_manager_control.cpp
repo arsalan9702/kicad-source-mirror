@@ -622,16 +622,6 @@ int KICAD_MANAGER_CONTROL::ToggleLocalHistory( const TOOL_EVENT& aEvent )
 }
 
 
-int KICAD_MANAGER_CONTROL::ViewDroppedViewers( const TOOL_EVENT& aEvent )
-{
-    if( aEvent.Parameter<wxString*>() )
-        wxExecute( *aEvent.Parameter<wxString*>(), wxEXEC_ASYNC );
-
-    return 0;
-}
-
-
-
 int KICAD_MANAGER_CONTROL::SaveProjectAs( const TOOL_EVENT& aEvent )
 {
     wxString     msg;
@@ -846,20 +836,14 @@ int KICAD_MANAGER_CONTROL::Execute( const TOOL_EVENT& aEvent )
     wxString execFile;
     wxString param;
 
-    if( aEvent.IsAction( &KICAD_MANAGER_ACTIONS::viewGerbers ) )
-        execFile = GERBVIEW_EXE;
-    else if( aEvent.IsAction( &KICAD_MANAGER_ACTIONS::convertImage ) )
+    if( aEvent.IsAction( &KICAD_MANAGER_ACTIONS::convertImage ) )
         execFile = BITMAPCONVERTER_EXE;
-    else if( aEvent.IsAction( &KICAD_MANAGER_ACTIONS::showCalculator ) )
-        execFile = PCB_CALCULATOR_EXE;
     else if( aEvent.IsAction( &KICAD_MANAGER_ACTIONS::editDrawingSheet ) )
         execFile = PL_EDITOR_EXE;
     else if( aEvent.IsAction( &KICAD_MANAGER_ACTIONS::openTextEditor ) )
         execFile = Pgm().GetTextEditor();
     else if( aEvent.IsAction( &KICAD_MANAGER_ACTIONS::editOtherSch ) )
         execFile = EESCHEMA_EXE;
-    else if( aEvent.IsAction( &KICAD_MANAGER_ACTIONS::editOtherPCB ) )
-        execFile = PCBNEW_EXE;
     else
         wxFAIL_MSG( "Execute(): unexpected request" );
 
@@ -868,8 +852,6 @@ int KICAD_MANAGER_CONTROL::Execute( const TOOL_EVENT& aEvent )
 
     if( aEvent.Parameter<wxString*>() )
         param = *aEvent.Parameter<wxString*>();
-    else if( aEvent.IsAction( &KICAD_MANAGER_ACTIONS::viewGerbers ) && m_frame->IsProjectActive() )
-        param = m_frame->Prj().GetProjectPath();
 
     COMMON_CONTROL* commonControl = m_toolMgr->GetTool<COMMON_CONTROL>();
     return commonControl->Execute( execFile, param );
@@ -946,7 +928,6 @@ void KICAD_MANAGER_CONTROL::setTransitions()
     Go( &KICAD_MANAGER_CONTROL::CloseProject,       KICAD_MANAGER_ACTIONS::closeProject.MakeEvent() );
     Go( &KICAD_MANAGER_CONTROL::SaveProjectAs,      ACTIONS::saveAs.MakeEvent() );
     Go( &KICAD_MANAGER_CONTROL::LoadProject,        KICAD_MANAGER_ACTIONS::loadProject.MakeEvent() );
-    Go( &KICAD_MANAGER_CONTROL::ViewDroppedViewers, KICAD_MANAGER_ACTIONS::viewDroppedGerbers.MakeEvent() );
 
     Go( &KICAD_MANAGER_CONTROL::ArchiveProject,     KICAD_MANAGER_ACTIONS::archiveProject.MakeEvent() );
     Go( &KICAD_MANAGER_CONTROL::UnarchiveProject,   KICAD_MANAGER_ACTIONS::unarchiveProject.MakeEvent() );
@@ -959,16 +940,11 @@ void KICAD_MANAGER_CONTROL::setTransitions()
 
     Go( &KICAD_MANAGER_CONTROL::ShowPlayer,         KICAD_MANAGER_ACTIONS::editSchematic.MakeEvent() );
     Go( &KICAD_MANAGER_CONTROL::ShowPlayer,         KICAD_MANAGER_ACTIONS::editSymbols.MakeEvent() );
-    Go( &KICAD_MANAGER_CONTROL::ShowPlayer,         KICAD_MANAGER_ACTIONS::editPCB.MakeEvent() );
-    Go( &KICAD_MANAGER_CONTROL::ShowPlayer,         KICAD_MANAGER_ACTIONS::editFootprints.MakeEvent() );
-    Go( &KICAD_MANAGER_CONTROL::Execute,            KICAD_MANAGER_ACTIONS::viewGerbers.MakeEvent() );
     Go( &KICAD_MANAGER_CONTROL::Execute,            KICAD_MANAGER_ACTIONS::convertImage.MakeEvent() );
-    Go( &KICAD_MANAGER_CONTROL::Execute,            KICAD_MANAGER_ACTIONS::showCalculator.MakeEvent() );
     Go( &KICAD_MANAGER_CONTROL::Execute,            KICAD_MANAGER_ACTIONS::editDrawingSheet.MakeEvent() );
     Go( &KICAD_MANAGER_CONTROL::Execute,            KICAD_MANAGER_ACTIONS::openTextEditor.MakeEvent() );
 
     Go( &KICAD_MANAGER_CONTROL::Execute,            KICAD_MANAGER_ACTIONS::editOtherSch.MakeEvent() );
-    Go( &KICAD_MANAGER_CONTROL::Execute,            KICAD_MANAGER_ACTIONS::editOtherPCB.MakeEvent() );
 
     Go( &KICAD_MANAGER_CONTROL::ShowPluginManager,  KICAD_MANAGER_ACTIONS::showPluginManager.MakeEvent() );
 }

@@ -111,10 +111,8 @@ void PROJECT_TREE::LoadIcons()
     images.push_back( getBundle( BITMAPS::project_kicad, c_fileDefSize ) );          // TREE_JSON_PROJECT
     images.push_back( getBundle( BITMAPS::icon_eeschema_24, c_fileDefSize ) );       // TREE_LEGACY_SCHEMATIC
     images.push_back( getBundle( BITMAPS::icon_eeschema_24, c_fileDefSize ) );       // TREE_SEXPR_SCHEMATIC
-    images.push_back( getBundle( BITMAPS::icon_pcbnew_24, c_fileDefSize ) );         // TREE_LEGACY_PCB
-    images.push_back( getBundle( BITMAPS::icon_pcbnew_24, c_fileDefSize ) );         // TREE_SEXPR_PCB
-    images.push_back( getBundle( BITMAPS::icon_gerbview_24, c_fileDefSize ) );       // TREE_GERBER
-    images.push_back( getBundle( BITMAPS::file_gerber_job, c_fileDefSize ) );        // TREE_GERBER_JOB_FILE (.gbrjob)
+    images.push_back( getBundle( BITMAPS::file_cir, c_fileDefSize ) );               // TREE_GERBER
+    images.push_back( getBundle( BITMAPS::file_cir, c_fileDefSize ) );               // TREE_GERBER_JOB_FILE (.gbrjob)
     images.push_back( getBundle( BITMAPS::file_html, c_fileDefSize ) );              // TREE_HTML
     images.push_back( getBundle( BITMAPS::file_pdf, c_fileDefSize ) );               // TREE_PDF
     images.push_back( getBundle( BITMAPS::editor, c_fileDefSize ) );                 // TREE_TXT

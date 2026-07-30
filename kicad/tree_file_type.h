@@ -38,10 +38,6 @@ enum class TREE_FILE_TYPE
     JSON_PROJECT,           // JSON formatted project file (.kicad_pro)
     LEGACY_SCHEMATIC,       // Schematic file (.sch)
     SEXPR_SCHEMATIC,        // Schematic file (.kicad_sch)
-    LEGACY_PCB,             // board file (.brd) legacy format
-    SEXPR_PCB,              // board file (.kicad_brd) new s expression format
-    GERBER,                 // Gerber  file (.pho, .g*)
-    GERBER_JOB_FILE,        // Gerber  file (.gbrjob)
     HTML,                   // HTML file (.htm, *.html)
     PDF,                    // PDF file (.pdf)
     TXT,                    // ascii text file (.txt)

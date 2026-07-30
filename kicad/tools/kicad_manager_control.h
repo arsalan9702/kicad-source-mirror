@@ -64,7 +64,6 @@ public:
      * @brief Imports a non kicad project from a sch/pcb dropped file.
      * No error is displayed if the project can not be imported.
      */
-    int ViewDroppedViewers( const TOOL_EVENT& aEvent );
 
     int Refresh( const TOOL_EVENT& aEvent );
     int UpdateMenu( const TOOL_EVENT& aEvent );

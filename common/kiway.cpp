@@ -118,11 +118,7 @@ const wxString KIWAY::dso_search_path( FACE_T aFaceId )
     switch( aFaceId )
     {
     case FACE_SCH:              name = KIFACE_PREFIX "eeschema";            break;
-    case FACE_PCB:              name = KIFACE_PREFIX "pcbnew";              break;
-    case FACE_CVPCB:            name = KIFACE_PREFIX "cvpcb";               break;
-    case FACE_GERBVIEW:         name = KIFACE_PREFIX "gerbview";            break;
     case FACE_PL_EDITOR:        name = KIFACE_PREFIX "pl_editor";           break;
-    case FACE_PCB_CALCULATOR:   name = KIFACE_PREFIX "pcb_calculator";      break;
     case FACE_BMP2CMP:          name = KIFACE_PREFIX "bitmap2component";    break;
 
     default:
@@ -227,15 +223,15 @@ KIFACE* KIWAY::KiFACE( FACE_T aFaceId, bool doLoad )
     {
         wxString dname = dso_search_path( aFaceId );
 
-        // Insert DLL search path for kicad_3dsg from build dir
+        // Keep the build-directory search path limited to the schematic-only runtime layout.
         if( wxGetEnv( wxT( "KICAD_RUN_FROM_BUILD_DIR" ), nullptr ) )
         {
             wxFileName myPath = wxStandardPaths::Get().GetExecutablePath();
 
-            if( !myPath.GetPath().EndsWith( wxT( "pcbnew" ) ) )
+            if( !myPath.GetPath().EndsWith( wxT( "eeschema" ) ) )
             {
                 myPath.RemoveLastDir();
-                myPath.AppendDir( wxT( "pcbnew" ) );
+                myPath.AppendDir( wxT( "eeschema" ) );
                 KIPLATFORM::APP::AddDynamicLibrarySearchPath( myPath.GetPath() );
             }
         }
