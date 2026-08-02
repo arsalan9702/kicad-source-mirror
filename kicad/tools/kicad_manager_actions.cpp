@@ -114,26 +114,6 @@ TOOL_ACTION KICAD_MANAGER_ACTIONS::editSymbols( TOOL_ACTION_ARGS()
         .Flags( AF_NONE )
         .Parameter( FRAME_SCH_SYMBOL_EDITOR ) );
 
-TOOL_ACTION KICAD_MANAGER_ACTIONS::convertImage( TOOL_ACTION_ARGS()
-        .Name( "kicad.Control.convertImage" )
-        .Scope( AS_GLOBAL )
-        .DefaultHotkey( MD_CTRL + 'B' )
-        .LegacyHotkeyName( "Run Bitmap2Component" )
-        .FriendlyName( _( "Image Converter" ) )
-        .Tooltip( _( "Convert bitmap images to schematic symbols" ) )
-        .Icon( BITMAPS::icon_bitmap2component_24 )
-        .Parameter<wxString*>( nullptr ) );      // Default to no filename
-
-TOOL_ACTION KICAD_MANAGER_ACTIONS::editDrawingSheet( TOOL_ACTION_ARGS()
-        .Name( "kicad.Control.editDrawingSheet" )
-        .Scope( AS_GLOBAL )
-        .DefaultHotkey( MD_CTRL + 'Y' )
-        .LegacyHotkeyName( "Run PlEditor" )
-        .FriendlyName( _( "Drawing Sheet Editor" ) )
-        .Tooltip( _( "Edit drawing sheet borders and title block" ) )
-        .Icon( BITMAPS::icon_pagelayout_editor_24 )
-        .Parameter<wxString*>( nullptr ) );      // Default to no filename
-
 TOOL_ACTION KICAD_MANAGER_ACTIONS::showPluginManager( TOOL_ACTION_ARGS()
         .Name( "kicad.Control.pluginContentManager" )
         .Scope( AS_GLOBAL )

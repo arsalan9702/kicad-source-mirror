@@ -836,11 +836,7 @@ int KICAD_MANAGER_CONTROL::Execute( const TOOL_EVENT& aEvent )
     wxString execFile;
     wxString param;
 
-    if( aEvent.IsAction( &KICAD_MANAGER_ACTIONS::convertImage ) )
-        execFile = BITMAPCONVERTER_EXE;
-    else if( aEvent.IsAction( &KICAD_MANAGER_ACTIONS::editDrawingSheet ) )
-        execFile = PL_EDITOR_EXE;
-    else if( aEvent.IsAction( &KICAD_MANAGER_ACTIONS::openTextEditor ) )
+    if( aEvent.IsAction( &KICAD_MANAGER_ACTIONS::openTextEditor ) )
         execFile = Pgm().GetTextEditor();
     else if( aEvent.IsAction( &KICAD_MANAGER_ACTIONS::editOtherSch ) )
         execFile = EESCHEMA_EXE;
@@ -940,8 +936,6 @@ void KICAD_MANAGER_CONTROL::setTransitions()
 
     Go( &KICAD_MANAGER_CONTROL::ShowPlayer,         KICAD_MANAGER_ACTIONS::editSchematic.MakeEvent() );
     Go( &KICAD_MANAGER_CONTROL::ShowPlayer,         KICAD_MANAGER_ACTIONS::editSymbols.MakeEvent() );
-    Go( &KICAD_MANAGER_CONTROL::Execute,            KICAD_MANAGER_ACTIONS::convertImage.MakeEvent() );
-    Go( &KICAD_MANAGER_CONTROL::Execute,            KICAD_MANAGER_ACTIONS::editDrawingSheet.MakeEvent() );
     Go( &KICAD_MANAGER_CONTROL::Execute,            KICAD_MANAGER_ACTIONS::openTextEditor.MakeEvent() );
 
     Go( &KICAD_MANAGER_CONTROL::Execute,            KICAD_MANAGER_ACTIONS::editOtherSch.MakeEvent() );

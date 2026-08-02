@@ -218,7 +218,6 @@ void KICAD_MANAGER_FRAME::doReCreateMenuBar()
 
     toolsMenu->Add( KICAD_MANAGER_ACTIONS::editSchematic );
     toolsMenu->Add( KICAD_MANAGER_ACTIONS::editSymbols );
-    toolsMenu->Add( KICAD_MANAGER_ACTIONS::editDrawingSheet );
 
     wxMenuItem* pcmMenuItem = toolsMenu->Add( KICAD_MANAGER_ACTIONS::showPluginManager );
 

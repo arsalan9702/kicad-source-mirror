@@ -329,7 +329,7 @@ void PROJECT_TREE_ITEM::Activate( PROJECT_TREE_PANE* aTreePrjFrame )
         break;
 
     case TREE_FILE_TYPE::DRAWING_SHEET:
-        toolMgr->RunAction<wxString*>( KICAD_MANAGER_ACTIONS::editDrawingSheet, &fullFileName );
+        toolMgr->RunAction<wxString*>( KICAD_MANAGER_ACTIONS::openTextEditor, &fullFileName );
         break;
 
     case TREE_FILE_TYPE::FOOTPRINT_FILE:

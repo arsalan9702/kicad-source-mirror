@@ -150,9 +150,6 @@ void PANEL_KICAD_LAUNCHER::CreateLaunchers()
     addLauncher( KICAD_MANAGER_ACTIONS::editSymbols, BITMAPS::icon_libedit,
                  _( "Edit global and/or project schematic symbol libraries" ) );
 
-    addLauncher( KICAD_MANAGER_ACTIONS::editDrawingSheet, BITMAPS::icon_pagelayout_editor,
-                 _( "Edit drawing sheet borders and title blocks for use in schematics" ) );
-
     BITMAP_BUTTON* bb = addLauncher( KICAD_MANAGER_ACTIONS::showPluginManager, BITMAPS::icon_pcm,
                                      _( "Manage downloadable packages from KiCad and 3rd party repositories" ),
                                      KIPLATFORM::POLICY::GetPolicyBool( POLICY_KEY_PCM )

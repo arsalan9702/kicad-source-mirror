@@ -91,7 +91,7 @@
     </content_rating>
 
     <releases>
-        <release version="10.99.0-unknown" date="2026-07-24" />
+        <release version="10.99.0-unknown" date="2026-07-30" />
     </releases>
 
     <!-- The supports/recommends tags are not recognized by older appstream-util

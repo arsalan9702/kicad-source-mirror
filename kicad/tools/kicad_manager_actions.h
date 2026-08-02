@@ -42,8 +42,6 @@ public:
 
     static TOOL_ACTION editSchematic;
     static TOOL_ACTION editSymbols;
-    static TOOL_ACTION convertImage;
-    static TOOL_ACTION editDrawingSheet;
     static TOOL_ACTION openTextEditor;
     static TOOL_ACTION showPluginManager;
 

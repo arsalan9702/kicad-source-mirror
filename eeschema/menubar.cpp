@@ -313,8 +313,6 @@ void SCH_EDIT_FRAME::doReCreateMenuBar()
     if( !Kiface().IsSingle() )
         toolsMenu->Add( ACTIONS::showProjectManager );
 
-    toolsMenu->Add( ACTIONS::showCalculatorTools );
-
     toolsMenu->AppendSeparator();
     toolsMenu->Add( ACTIONS::showSymbolEditor );
     toolsMenu->Add( SCH_ACTIONS::updateSymbols );

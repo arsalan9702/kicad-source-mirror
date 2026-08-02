@@ -32,6 +32,5 @@ const wxString BITMAPCONVERTER_EXE ( wxS( "bitmap2component.exe" ) );
 const wxString PL_EDITOR_EXE       ( wxS( "pl_editor.exe" ) );
 #else
 const wxString EESCHEMA_EXE        ( wxS( "eeschema" ) );
-const wxString BITMAPCONVERTER_EXE ( wxS( "bitmap2component" ) );
-const wxString PL_EDITOR_EXE       ( wxS( "pl_editor" ) );
 #endif
+
