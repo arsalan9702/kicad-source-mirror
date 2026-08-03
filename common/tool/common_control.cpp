@@ -224,14 +224,13 @@ int COMMON_CONTROL::Execute( const wxString& aExecutible, const wxString& aParam
 {
     TERMINATE_HANDLER* callback = new TERMINATE_HANDLER( aExecutible );
 
-    bool isKicadBinary = false;
-
-    if( aExecutible == GERBVIEW_EXE || aExecutible == BITMAPCONVERTER_EXE
-        || aExecutible == PCB_CALCULATOR_EXE || aExecutible == PL_EDITOR_EXE
-        || aExecutible == EESCHEMA_EXE || aExecutible == PCBNEW_EXE )
+    if( aExecutible.IsEmpty() )
     {
-        isKicadBinary = true;
+        delete callback;
+        return 0;
     }
+
+    const bool isKicadBinary = aExecutible == EESCHEMA_EXE;
 
     long pid = ExecuteFile( aExecutible, aParam, callback, isKicadBinary );
 
@@ -261,18 +260,8 @@ int COMMON_CONTROL::Execute( const wxString& aExecutible, const wxString& aParam
 
 int COMMON_CONTROL::Execute( const TOOL_EVENT& aEvent )
 {
-    wxString execFile;
-    wxString param;
-
-    if( aEvent.IsAction( &ACTIONS::showCalculatorTools ) )
-        execFile = PCB_CALCULATOR_EXE;
-    else
-        wxFAIL_MSG( "Execute(): unexpected request" );
-
-    if( execFile.IsEmpty() )
-        return 0;
-
-    return Execute( execFile, param );
+    wxFAIL_MSG( "Execute(): unexpected request" );
+    return 0;
 }
 
 
@@ -459,7 +448,6 @@ void COMMON_CONTROL::setTransitions()
     Go( &COMMON_CONTROL::ShowPlayer,         ACTIONS::showSymbolEditor.MakeEvent() );
     Go( &COMMON_CONTROL::ShowPlayer,         ACTIONS::showFootprintBrowser.MakeEvent() );
     Go( &COMMON_CONTROL::ShowPlayer,         ACTIONS::showFootprintEditor.MakeEvent() );
-    Go( &COMMON_CONTROL::Execute,            ACTIONS::showCalculatorTools.MakeEvent() );
     Go( &COMMON_CONTROL::ShowProjectManager, ACTIONS::showProjectManager.MakeEvent() );
 
     Go( &COMMON_CONTROL::ShowHelp,           ACTIONS::gettingStarted.MakeEvent() );

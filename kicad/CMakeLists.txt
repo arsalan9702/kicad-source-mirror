@@ -54,33 +54,11 @@ set( KICAD_SRCS
 set( KICAD_CLI_SRCS
     cli/command.cpp
     cli/command_jobset_run.cpp
-    cli/command_pcb_export_base.cpp
-    cli/command_pcb_diff.cpp
-    cli/command_pcb_drc.cpp
     cli/command_mergetool.cpp
     cli/command_git_mergedriver.cpp
     cli/command_fp_diff.cpp
     cli/command_sym_diff.cpp
     cli/command_sch_diff.cpp
-    cli/command_pcb_render.cpp
-    cli/command_pcb_export_3d.cpp
-    cli/command_pcb_export_drill.cpp
-    cli/command_pcb_export_dxf.cpp
-    cli/command_pcb_export_gerber.cpp
-    cli/command_pcb_export_gerbers.cpp
-    cli/command_pcb_export_gencad.cpp
-    cli/command_pcb_export_hpgl.cpp
-    cli/command_pcb_export_ipc2581.cpp
-    cli/command_pcb_export_ipcd356.cpp
-    cli/command_pcb_export_odb.cpp
-    cli/command_pcb_export_pdf.cpp
-    cli/command_pcb_export_png.cpp
-    cli/command_pcb_export_pos.cpp
-    cli/command_pcb_export_ps.cpp
-    cli/command_pcb_export_stats.cpp
-    cli/command_pcb_export_svg.cpp
-    cli/command_pcb_upgrade.cpp
-    cli/command_pcb_import.cpp
     cli/command_fp_export_svg.cpp
     cli/command_fp_upgrade.cpp
     cli/command_sch_upgrade.cpp
@@ -91,9 +69,6 @@ set( KICAD_CLI_SRCS
     cli/command_sch_erc.cpp
     cli/command_sym_export_svg.cpp
     cli/command_sym_upgrade.cpp
-    cli/command_gerber_info.cpp
-    cli/command_gerber_convert_png.cpp
-    cli/command_gerber_diff.cpp
     cli/command_version.cpp
 
     jobs_runner.cpp
@@ -161,9 +136,7 @@ if( UNIX )
     # for build directory: create kiface symlinks so kicad (exe) can be run in-situ
     add_custom_target( kiface_sym_links
         COMMAND ${CMAKE_COMMAND} -E create_symlink "${CMAKE_BINARY_DIR}/eeschema/_eeschema.kiface" "${CMAKE_BINARY_DIR}/kicad/_eeschema.kiface"
-        COMMAND ${CMAKE_COMMAND} -E create_symlink "${CMAKE_BINARY_DIR}/pcbnew/_pcbnew.kiface" "${CMAKE_BINARY_DIR}/kicad/_pcbnew.kiface"
         COMMAND ${CMAKE_COMMAND} -E create_symlink "${CMAKE_BINARY_DIR}/cvpcb/_cvpcb.kiface" "${CMAKE_BINARY_DIR}/kicad/_cvpcb.kiface"
-        COMMAND ${CMAKE_COMMAND} -E create_symlink "${CMAKE_BINARY_DIR}/gerbview/_gerbview.kiface" "${CMAKE_BINARY_DIR}/kicad/_gerbview.kiface"
         COMMENT "Making <build-dir>/kicad/<kiface.symlinks>"
         )
 endif()
@@ -292,9 +265,7 @@ if( APPLE )
         # move all app bundles
         move_to_main_bundle( \"bitmap2component.app\" \"Image Converter.app\" )
         move_to_main_bundle( \"eeschema.app\" \"Schematic Editor.app\" )
-        move_to_main_bundle( \"gerbview.app\" \"GerbView.app\" )
-        move_to_main_bundle( \"pcb_calculator.app\" \"PCB Calculator.app\" )
-        move_to_main_bundle( \"pcbnew.app\" \"PCB Editor.app\" )
+        move_to_main_bundle( "pcb_calculator.app" "PCB Calculator.app" )
         move_to_main_bundle( \"pl_editor.app\" \"Page Layout Editor.app\" )
 
         if( ${KICAD_USE_SENTRY} )

@@ -92,11 +92,6 @@ TOOL_ACTION KICAD_MANAGER_ACTIONS::loadProject( TOOL_ACTION_ARGS()
         .Scope( AS_GLOBAL )
         .Parameter<wxString*>( nullptr ) );      // Default to no filename
 
-TOOL_ACTION KICAD_MANAGER_ACTIONS::viewDroppedGerbers( TOOL_ACTION_ARGS()
-        .Name( "kicad.Control.viewDroppedGerbers" )
-        .Scope( AS_GLOBAL )
-        .Parameter<wxString*>( nullptr ) );      // Default to no filename
-
 TOOL_ACTION KICAD_MANAGER_ACTIONS::editSchematic( TOOL_ACTION_ARGS()
         .Name( "kicad.Control.editSchematic" )
         .Scope( AS_GLOBAL )
@@ -119,67 +114,6 @@ TOOL_ACTION KICAD_MANAGER_ACTIONS::editSymbols( TOOL_ACTION_ARGS()
         .Flags( AF_NONE )
         .Parameter( FRAME_SCH_SYMBOL_EDITOR ) );
 
-TOOL_ACTION KICAD_MANAGER_ACTIONS::editPCB( TOOL_ACTION_ARGS()
-        .Name( "kicad.Control.editPCB" )
-        .Scope( AS_GLOBAL )
-        .DefaultHotkey( MD_CTRL + 'P' )
-        .LegacyHotkeyName( "Run Pcbnew" )
-        .FriendlyName( _( "PCB Editor" ) )
-        .Tooltip( _( "Edit PCB in PCB editor" ) )
-        .Icon( BITMAPS::icon_pcbnew_24 )
-        .Flags( AF_NONE )
-        .Parameter( FRAME_PCB_EDITOR ) );
-
-TOOL_ACTION KICAD_MANAGER_ACTIONS::editFootprints( TOOL_ACTION_ARGS()
-        .Name( "kicad.Control.editFootprints" )
-        .Scope( AS_GLOBAL )
-        .DefaultHotkey( MD_CTRL + 'F' )
-        .LegacyHotkeyName( "Run FpEditor" )
-        .FriendlyName( _( "Footprint Editor" ) )
-        .Tooltip( _( "Create, delete and edit PCB footprints" ) )
-        .Icon( BITMAPS::icon_modedit_24 )
-        .Flags( AF_NONE )
-        .Parameter( FRAME_FOOTPRINT_EDITOR ) );
-
-TOOL_ACTION KICAD_MANAGER_ACTIONS::viewGerbers( TOOL_ACTION_ARGS()
-        .Name( "kicad.Control.viewGerbers" )
-        .Scope( AS_GLOBAL )
-        .DefaultHotkey( MD_CTRL + 'G' )
-        .LegacyHotkeyName( "Run Gerbview" )
-        .FriendlyName( _( "Gerber Viewer" ) )
-        .Tooltip( _( "Preview Gerber output files" ) )
-        .Icon( BITMAPS::icon_gerbview_24 )
-        .Parameter<wxString*>( nullptr ) );      // Default to no filename
-
-TOOL_ACTION KICAD_MANAGER_ACTIONS::convertImage( TOOL_ACTION_ARGS()
-        .Name( "kicad.Control.convertImage" )
-        .Scope( AS_GLOBAL )
-        .DefaultHotkey( MD_CTRL + 'B' )
-        .LegacyHotkeyName( "Run Bitmap2Component" )
-        .FriendlyName( _( "Image Converter" ) )
-        .Tooltip( _( "Convert bitmap images to schematic or PCB components" ) )
-        .Icon( BITMAPS::icon_bitmap2component_24 )
-        .Parameter<wxString*>( nullptr ) );      // Default to no filename
-
-TOOL_ACTION KICAD_MANAGER_ACTIONS::showCalculator( TOOL_ACTION_ARGS()
-        .Name( "kicad.Control.showCalculator" )
-        .Scope( AS_GLOBAL )
-        .LegacyHotkeyName( "Run PcbCalculator" )
-        .FriendlyName( _( "Calculator Tools" ) )
-        .Tooltip( _( "Run component calculations, track width calculations, etc." ) )
-        .Icon( BITMAPS::icon_pcbcalculator_24 )
-        .Parameter<wxString*>( nullptr ) );      // Default to no filename
-
-TOOL_ACTION KICAD_MANAGER_ACTIONS::editDrawingSheet( TOOL_ACTION_ARGS()
-        .Name( "kicad.Control.editDrawingSheet" )
-        .Scope( AS_GLOBAL )
-        .DefaultHotkey( MD_CTRL + 'Y' )
-        .LegacyHotkeyName( "Run PlEditor" )
-        .FriendlyName( _( "Drawing Sheet Editor" ) )
-        .Tooltip( _( "Edit drawing sheet borders and title block" ) )
-        .Icon( BITMAPS::icon_pagelayout_editor_24 )
-        .Parameter<wxString*>( nullptr ) );      // Default to no filename
-
 TOOL_ACTION KICAD_MANAGER_ACTIONS::showPluginManager( TOOL_ACTION_ARGS()
         .Name( "kicad.Control.pluginContentManager" )
         .Scope( AS_GLOBAL )
@@ -198,11 +132,6 @@ TOOL_ACTION KICAD_MANAGER_ACTIONS::openTextEditor( TOOL_ACTION_ARGS()
 
 TOOL_ACTION KICAD_MANAGER_ACTIONS::editOtherSch( TOOL_ACTION_ARGS()
         .Name( "kicad.Control.editOtherSch" )
-        .Scope( AS_GLOBAL )
-        .Parameter<wxString*>( nullptr ) );      // Default to no filename
-
-TOOL_ACTION KICAD_MANAGER_ACTIONS::editOtherPCB( TOOL_ACTION_ARGS()
-        .Name( "kicad.Control.editOtherPCB" )
         .Scope( AS_GLOBAL )
         .Parameter<wxString*>( nullptr ) );      // Default to no filename
 

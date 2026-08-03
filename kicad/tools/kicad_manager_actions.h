@@ -39,21 +39,13 @@ public:
     static TOOL_ACTION openJobsetFile;
     static TOOL_ACTION closeProject;
     static TOOL_ACTION loadProject;
-    static TOOL_ACTION viewDroppedGerbers;
 
     static TOOL_ACTION editSchematic;
     static TOOL_ACTION editSymbols;
-    static TOOL_ACTION editPCB;
-    static TOOL_ACTION editFootprints;
-    static TOOL_ACTION viewGerbers;
-    static TOOL_ACTION convertImage;
-    static TOOL_ACTION showCalculator;
-    static TOOL_ACTION editDrawingSheet;
     static TOOL_ACTION openTextEditor;
     static TOOL_ACTION showPluginManager;
 
     static TOOL_ACTION editOtherSch;
-    static TOOL_ACTION editOtherPCB;
 
     static TOOL_ACTION archiveProject;
     static TOOL_ACTION unarchiveProject;

@@ -1289,20 +1289,6 @@ TOOL_ACTION SCH_ACTIONS::editSymbolLibraryLinks( TOOL_ACTION_ARGS()
         .Tooltip( _( "Edit a table of links between schematic and library symbols" ) )
         .Icon( BITMAPS::edit_cmp_symb_links ) );
 
-// TOOL_ACTION SCH_ACTIONS::assignFootprints( TOOL_ACTION_ARGS()
-//         .Name( "eeschema.EditorControl.assignFootprints" )
-//         .Scope( AS_GLOBAL )
-//         .FriendlyName( _( "Assign Footprints..." ) )
-//         .Tooltip( _( "Run footprint assignment tool" ) )
-//         .Icon( BITMAPS::icon_cvpcb_24 ) );
-
-// TOOL_ACTION SCH_ACTIONS::importFPAssignments( TOOL_ACTION_ARGS()
-//         .Name( "eeschema.EditorControl.importFPAssignments" )
-//         .Scope( AS_GLOBAL )
-//         .FriendlyName( _( "Import Footprint Assignments..." ) )
-//         .Tooltip( _( "Import symbol footprint assignments from .cmp file created by board editor" ) )
-//         .Icon( BITMAPS::import_footprint_names ) );
-
 TOOL_ACTION SCH_ACTIONS::annotate( TOOL_ACTION_ARGS()
         .Name( "eeschema.EditorControl.annotate" )
         .Scope( AS_GLOBAL )
@@ -1382,13 +1368,6 @@ TOOL_ACTION SCH_ACTIONS::importNonKicadSchematic( TOOL_ACTION_ARGS()
         .FriendlyName( _( "Import Non-KiCad Schematic..." ) )
         .Tooltip( _( "Replace current schematic sheet with one imported from another application" ) )
         .Icon( BITMAPS::import_document ) );
-
-TOOL_ACTION SCH_ACTIONS::showPcbNew( TOOL_ACTION_ARGS()
-        .Name( "eeschema.EditorControl.showPcbNew" )
-        .Scope( AS_GLOBAL )
-        .FriendlyName( _( "Switch to PCB Editor" ) )
-        .Tooltip( _( "Open PCB in board editor" ) )
-        .Icon( BITMAPS::icon_pcbnew_24 ) );
 
 TOOL_ACTION SCH_ACTIONS::exportNetlist( TOOL_ACTION_ARGS()
         .Name( "eeschema.EditorControl.exportNetlist" )
