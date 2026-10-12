@@ -4714,26 +4714,76 @@ int SCH_EDIT_TOOL::RunGseimSimulation( const TOOL_EVENT& )
     return 0;
 }
 
+// int SCH_EDIT_TOOL::RunGseimPlotter( const TOOL_EVENT& aEvent )
+// {
+//     wxFileName exe( GetGseimPlotterPath() );
+
+
+//     if( !exe.FileExists() )
+//     {
+//         wxMessageBox( wxString::Format( _( "Cannot find GSEIM plotter:\n%s" ), exe.GetFullPath() ),
+//                       _( "GSEIM" ), wxOK | wxICON_ERROR, m_frame );
+//         return 0;
+//     }
+
+//     wxExecuteEnv env;
+//     env.cwd = exe.GetPath();
+
+//     wxString command = wxString::Format( "\"%s\"", exe.GetFullPath() );
+
+//     long pid = wxExecute( command, wxEXEC_ASYNC, nullptr, &env );
+
+//     if( pid == 0 )
+//         wxMessageBox( _( "Failed to start GSEIM plotter." ), _( "GSEIM" ), wxOK | wxICON_ERROR, m_frame );
+
+//     return 0;
+// }
+
 int SCH_EDIT_TOOL::RunGseimPlotter( const TOOL_EVENT& aEvent )
 {
-    wxFileName exe( GetGseimPlotterPath() );
+    wxFileName script( GetGseimPlotterPath() );
 
-    if( !exe.FileExists() )
+    if( !script.FileExists() )
     {
-        wxMessageBox( wxString::Format( _( "Cannot find GSEIM plotter:\n%s" ), exe.GetFullPath() ),
-                      _( "GSEIM" ), wxOK | wxICON_ERROR, m_frame );
+        wxMessageBox(
+            wxString::Format(
+                _( "Cannot find GSEIM plotter:\n%s" ),
+                script.GetFullPath() ),
+            _( "GSEIM" ),
+            wxOK | wxICON_ERROR,
+            m_frame );
+
         return 0;
     }
 
     wxExecuteEnv env;
-    env.cwd = exe.GetPath();
+    env.cwd = script.GetPath();
 
-    wxString command = wxString::Format( "\"%s\"", exe.GetFullPath() );
+#if defined( __WXMSW__ )
+    wxString python = "python";
+#else
+    wxString python = "python3";
+#endif
 
-    long pid = wxExecute( command, wxEXEC_ASYNC, nullptr, &env );
+    wxString command = wxString::Format(
+        "\"%s\" \"%s\"",
+        python,
+        script.GetFullPath() );
+
+    long pid = wxExecute(
+        command,
+        wxEXEC_ASYNC,
+        nullptr,
+        &env );
 
     if( pid == 0 )
-        wxMessageBox( _( "Failed to start GSEIM plotter." ), _( "GSEIM" ), wxOK | wxICON_ERROR, m_frame );
+    {
+        wxMessageBox(
+            _( "Failed to start GSEIM plotter." ),
+            _( "GSEIM" ),
+            wxOK | wxICON_ERROR,
+            m_frame );
+    }
 
     return 0;
 }

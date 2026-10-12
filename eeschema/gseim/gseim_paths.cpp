@@ -51,11 +51,16 @@ wxString GetGseimRunPath()
     return GetGseimResourcePath() + "/bin/run_gseim";
 }
 
+// wxString GetGseimPlotterPath()
+// {
+// #if defined( __WXMSW__ )
+//     return GetGseimResourcePath() + "/bin/gseim_plotter/gseim_plotter.exe";
+// #else
+//     return GetGseimResourcePath() + "/bin/gseim_plotter/gseim_plotter";
+// #endif
+// }
+
 wxString GetGseimPlotterPath()
 {
-#if defined( __WXMSW__ )
-    return GetGseimResourcePath() + "/bin/gseim_plotter/gseim_plotter.exe";
-#else
-    return GetGseimResourcePath() + "/bin/gseim_plotter/gseim_plotter";
-#endif
+    return PATHS::GetStockDataPath() + "/eeschema/python_scripts/gseimv7.py";
 }
